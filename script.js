@@ -25,9 +25,6 @@ function getHumanChoice(){
   return answer;
 }
 
-
-function playGame(getHumanChoice, getComputerChoice)
-{
 let humanScore = 0;
 let computerScore = 0;
 
@@ -46,24 +43,10 @@ function playRound(humanChoice, computerChoice){
 
 }
 
-for(let i = 0;i < 5; i++){
-  let hum = getHumanChoice();
-  let rob = getComputerChoice();
-  playRound(hum, rob);
-}
 
+let span = document.querySelector("span");
 
-
-  if(humanScore > computerScore){
-    console.log(`Humans win! Score was ${humanScore} to ${computerScore}`);
-  }
-  else if (humanScore == computerScore){
-    console.log("It's a tie!");
-  }
-  else{
-    console.log(`Robots win! Score was ${computerScore} to ${humanScore}`);
-  }
-
-}
-
-playGame(getHumanChoice, getComputerChoice);
+span.addEventListener("click", (e) => {
+  let choice = e.target.textContent;
+  playRound(choice.toLowerCase(), getComputerChoice());
+});
