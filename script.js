@@ -1,4 +1,5 @@
-console.log("Hello world");
+let span = document.querySelector("span");
+let results = document.querySelector("#results");
 
 function getComputerChoice()
 {
@@ -31,20 +32,17 @@ let computerScore = 0;
 function playRound(humanChoice, computerChoice){
   if(humanChoice === "rock" && computerChoice === "scissors" || humanChoice === "paper"  && computerChoice === "rock" || humanChoice === "scissors" && computerChoice === "paper"){
     humanScore++;
-    console.log(`You win! ${humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1)} beats ${computerChoice}.`);
+    results.innerHTML += (`You win! ${humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1)} beats ${computerChoice}.<br>`);
   }
   else if(humanChoice === computerChoice){
-    console.log("Its a tie!");
+    results.innerHTML += ("Its a tie! <br>");
   }
   else{
     computerScore++;
-    console.log(`You lose! ${computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1)} beats ${humanChoice}.`);
+    results.innerHTML += (`You lose! ${computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1)} beats ${humanChoice}.<br>`);
   }
 
 }
-
-
-let span = document.querySelector("span");
 
 span.addEventListener("click", (e) => {
   let choice = e.target.textContent;
