@@ -5,13 +5,10 @@ function getComputerChoice()
   num = Math.trunc((Math.random() * 3));
   switch(num){
     case 0:
-      console.log("rock");
       return "rock";
     case 1:
-      console.log("paper");
       return "paper";
     case 2:
-      console.log("scissors");
       return "scissors";
   }
 }
@@ -21,19 +18,26 @@ function getHumanChoice(){
   for(;;){
      answer = prompt("Enter your choice for rock paper scissors!");
 
-    if(answer.toLowerCase() == "rock" || answer.toLowerCase() == "paper" || answer.toLowerCase() == "scissors"){
+    if(answer.toLowerCase() === "rock" || answer.toLowerCase() === "paper" || answer.toLowerCase() === "scissors"){
       break;
     }
   }
   return answer;
 }
 
-let humanScore, computerScore = 0;
+
+function playGame(getHumanChoice, getComputerChoice)
+{
+let humanScore = 0;
+let computerScore = 0;
 
 function playRound(humanChoice, computerChoice){
-  if(humanChoice == "rock" && computerChoice == "scissors" || humanChoice == "paper"  && computerChoice == "rock" || humanChoice == "scissors" && computerChoice == "paper"){
+  if(humanChoice === "rock" && computerChoice === "scissors" || humanChoice === "paper"  && computerChoice === "rock" || humanChoice === "scissors" && computerChoice === "paper"){
     humanScore++;
     console.log(`You win! ${humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1)} beats ${computerChoice}.`);
+  }
+  else if(humanChoice === computerChoice){
+    console.log("Its a tie!");
   }
   else{
     computerScore++;
@@ -41,3 +45,25 @@ function playRound(humanChoice, computerChoice){
   }
 
 }
+
+for(let i = 0;i < 5; i++){
+  let hum = getHumanChoice();
+  let rob = getComputerChoice();
+  playRound(hum, rob);
+}
+
+
+
+  if(humanScore > computerScore){
+    console.log(`Humans win! Score was ${humanScore} to ${computerScore}`);
+  }
+  else if (humanScore == computerScore){
+    console.log("It's a tie!");
+  }
+  else{
+    console.log(`Robots win! Score was ${computerScore} to ${humanScore}`);
+  }
+
+}
+
+playGame(getHumanChoice, getComputerChoice);
