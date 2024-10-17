@@ -32,6 +32,7 @@ let computerScore = 0;
 function playRound(humanChoice, computerChoice){
   if(humanChoice === "rock" && computerChoice === "scissors" || humanChoice === "paper"  && computerChoice === "rock" || humanChoice === "scissors" && computerChoice === "paper"){
     humanScore++;
+    console.log(humanScore);
     results.innerHTML += (`You win! ${humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1)} beats ${computerChoice}.<br>`);
   }
   else if(humanChoice === computerChoice){
@@ -47,11 +48,16 @@ function playRound(humanChoice, computerChoice){
 span.addEventListener("click", (e) => {
   let choice = e.target.textContent;
   playRound(choice.toLowerCase(), getComputerChoice());
-});
 
-if(humanScore === 5){
-  results.innerHTML += `Humans win! Score was ${humanScore} to ${computerScore}<br>`;
-}
-else if(computerScore === 5){
-  results.innerHTML += `Robots win! Score was ${computerScore} to ${humanScore}<br>`;
-}
+  console.log(humanScore);
+  if(humanScore == 5){
+    results.innerHTML += `Humans win! Score was ${humanScore} to ${computerScore}<br>`;
+    humanScore = 0;
+    computerScore = 0;
+  }
+  else if(computerScore == 5){
+    results.innerHTML += `Robots win! Score was ${computerScore} to ${humanScore}<br>`;
+    humanScore = 0
+    computerScore = 0;
+  }
+});
