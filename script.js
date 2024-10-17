@@ -16,4 +16,14 @@ function getComputerChoice()
   }
 }
 
+function getHumanChoice(){
+  let answer;
+  for(;;){
+     answer = prompt("Enter your choice for rock paper scissors!");
 
+    if(answer == "rock" || answer == "paper" || answer == "scissors"){
+      break;
+    }
+  }
+  return answer;
+}
