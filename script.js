@@ -48,3 +48,10 @@ span.addEventListener("click", (e) => {
   let choice = e.target.textContent;
   playRound(choice.toLowerCase(), getComputerChoice());
 });
+
+if(humanScore === 5){
+  results.innerHTML += `Humans win! Score was ${humanScore} to ${computerScore}<br>`;
+}
+else if(computerScore === 5){
+  results.innerHTML += `Robots win! Score was ${computerScore} to ${humanScore}<br>`;
+}
