@@ -21,9 +21,23 @@ function getHumanChoice(){
   for(;;){
      answer = prompt("Enter your choice for rock paper scissors!");
 
-    if(answer == "rock" || answer == "paper" || answer == "scissors"){
+    if(answer.toLowerCase() == "rock" || answer.toLowerCase() == "paper" || answer.toLowerCase() == "scissors"){
       break;
     }
   }
   return answer;
+}
+
+let humanScore, computerScore = 0;
+
+function playRound(humanChoice, computerChoice){
+  if(humanChoice == "rock" && computerChoice == "scissors" || humanChoice == "paper"  && computerChoice == "rock" || humanChoice == "scissors" && computerChoice == "paper"){
+    humanScore++;
+    console.log(`You win! ${humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1)} beats ${computerChoice}.`);
+  }
+  else{
+    computerScore++;
+    console.log(`You lose! ${computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1)} beats ${humanChoice}.`);
+  }
+
 }
